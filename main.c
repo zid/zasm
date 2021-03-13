@@ -8,37 +8,41 @@ int main(int argc, const char *argv[])
 	int i, disassemble = 0;
 	const char *filename = NULL;
 
-	for(i = 1; i < argc; i++)
+	for (i = 1; i < argc; i++)
 	{
-		if(argv[i][0] == '-')
+		if (argv[i][0] == '-')
 		{
-			if(argv[i][1] == 'd')
+			if (argv[i][1] == 'd')
 				disassemble = 1;
-			else {
+			else
+			{
 				fprintf(stderr, "Unknown command line option '%c'\n", argv[i][1]);
 				return EXIT_FAILURE;
 			}
-		} else {
-			if(filename)
+		}
+		else
+		{
+			if (filename)
 			{
-				fprintf(stderr, "Fatal: Filename given twicei\n");
+				fprintf(stderr, "Fatal: Filename given twice\n");
 				return EXIT_FAILURE;
 			}
 			filename = argv[i];
 		}
 	}
 
-	if(!filename)
+	if (!filename)
 	{
 		fprintf(stderr, "Fatal: No filename given\n");
 		return EXIT_FAILURE;
 	}
 
-	if(disassemble)
+	if (disassemble)
 	{
-
-	} else {
-		if(!assemble(filename))
+	}
+	else
+	{
+		if (!assemble(filename))
 			return EXIT_FAILURE;
 	}
 
